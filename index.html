@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Squash Tournament</title>
+  <title>SSC Members Squash Tournament</title>
 
   <style>
     * {
@@ -13,258 +13,708 @@
       padding: 0;
     }
 
+    :root {
+      --lime: #c7ff00;
+      --lime-bright: #d8ff3f;
+      --black: #080808;
+      --dark: #111111;
+      --white: #ffffff;
+      --grey: #d5d5d5;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
-      color: white;
-      background: #111;
+      color: var(--white);
+      background: var(--black);
       overflow-x: hidden;
     }
 
-    /* Background video */
+    /* =========================
+       BACKGROUND VIDEO
+    ========================= */
+
     .video-background {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -2;
+      z-index: -3;
     }
 
-    /* Dark layer over the video */
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: -1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.88) 0%,
+          rgba(0, 0, 0, 0.70) 45%,
+          rgba(0, 0, 0, 0.60) 100%
+        );
+      z-index: -2;
     }
+
+    .lime-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: var(--lime);
+      opacity: 0.08;
+      filter: blur(120px);
+      border-radius: 50%;
+      right: -200px;
+      top: 10%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
 
     .page {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     .content {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       text-align: center;
     }
 
+    /* =========================
+       TAG
+    ========================= */
+
     .tag {
       display: inline-block;
-      background: #c7ff00;
-      color: #111;
-      padding: 8px 16px;
+      background: var(--lime);
+      color: var(--black);
+      padding: 9px 18px;
       border-radius: 30px;
-      font-weight: bold;
+      font-weight: 900;
       font-size: 13px;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
     }
 
+    /* =========================
+       HEADINGS
+    ========================= */
+
     h1 {
-      font-size: clamp(50px, 12vw, 100px);
-      line-height: 0.85;
+      font-size: clamp(55px, 12vw, 105px);
+      line-height: 0.82;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: -4px;
-      margin-bottom: 20px;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
     }
 
     .subtitle {
-      font-size: 20px;
-      margin-bottom: 30px;
-      color: #ddd;
+      font-size: clamp(18px, 4vw, 23px);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 35px;
+      line-height: 1.4;
     }
 
+    .event-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .event-detail {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .event-detail span {
+      color: var(--lime);
+    }
+
+    /* =========================
+       FORM CARD
+    ========================= */
+
     .form-card {
-      background: rgba(255, 255, 255, 0.96);
-      color: #111;
-      border-radius: 24px;
-      padding: 30px;
+      background: rgba(255, 255, 255, 0.97);
+      color: var(--black);
+      border-radius: 26px;
+      padding: 32px;
       text-align: left;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
     }
 
     .form-card h2 {
-      font-size: 28px;
-      margin-bottom: 22px;
+      font-size: 32px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
     }
 
+    .form-intro {
+      color: #666;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    /* =========================
+       FORM FIELDS
+    ========================= */
+
     .field {
-      margin-bottom: 18px;
+      margin-bottom: 19px;
     }
 
     label {
       display: block;
-      font-weight: bold;
-      margin-bottom: 7px;
-      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     input,
     select {
       width: 100%;
-      padding: 14px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
+      padding: 15px;
+      border: 2px solid #dddddd;
+      border-radius: 11px;
       font-size: 16px;
-      background: white;
+      background: #ffffff;
+      color: #111111;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     input:focus,
     select:focus {
       outline: none;
-      border-color: #c7ff00;
+      border-color: var(--lime);
+      box-shadow: 0 0 0 3px rgba(199, 255, 0, 0.2);
     }
+
+    /* =========================
+       DISCLAIMER
+    ========================= */
+
+    .disclaimer {
+      background: #f2f2f2;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #555;
+    }
+
+    .disclaimer strong {
+      display: block;
+      color: #111;
+      margin-bottom: 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 1px;
+      accent-color: var(--lime);
+    }
+
+    .checkbox-row label {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
 
     button {
       width: 100%;
-      padding: 17px;
+      padding: 18px;
       border: none;
       border-radius: 12px;
-      background: #c7ff00;
-      color: #111;
+      background: var(--lime);
+      color: var(--black);
       font-size: 17px;
       font-weight: 900;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      margin-top: 8px;
-      transition: transform 0.2s, background 0.2s;
+      transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
     }
 
     button:hover {
-      transform: translateY(-2px);
-      background: #d7ff4d;
+      transform: translateY(-3px);
+      background: var(--lime-bright);
+      box-shadow: 0 10px 25px rgba(199, 255, 0, 0.25);
+    }
+
+    button:active {
+      transform: translateY(0);
     }
 
     .small-text {
       text-align: center;
-      color: #777;
-      font-size: 12px;
-      margin-top: 15px;
+      color: #888;
+      font-size: 11px;
+      margin-top: 14px;
+      line-height: 1.4;
     }
 
-    @media (max-width: 500px) {
-      .form-card {
-        padding: 22px;
+    /* =========================
+       SUCCESS MESSAGE
+    ========================= */
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 20px 5px;
+    }
+
+    .success-icon {
+      width: 65px;
+      height: 65px;
+      background: var(--lime);
+      color: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 18px;
+    }
+
+    .success-message h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .success-message p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer strong {
+      color: var(--lime);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .page {
+        padding: 30px 15px;
       }
 
       h1 {
-        letter-spacing: -2px;
+        font-size: clamp(52px, 17vw, 80px);
+        letter-spacing: -3px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      .event-details {
+        gap: 7px;
+      }
+
+      .event-detail {
+        font-size: 12px;
+        padding: 8px 11px;
+      }
+
+      .form-card {
+        padding: 23px;
+        border-radius: 21px;
+      }
+
+      .form-card h2 {
+        font-size: 27px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Background video -->
-  <video class="video-background" autoplay muted loop playsinline>
-    <source src="https://res.cloudinary.com/q13mdksv/video/upload/v1789737737/squash-2.mp4" type="video/mp4">
+  <!-- =========================
+       SQUASH VIDEO BACKGROUND
+  ========================= -->
+
+  <video
+    class="video-background"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source
+      src="https://res.cloudinary.com/q13mdksv/video/upload/v1789737737/squash-2.mp4"
+      type="video/mp4"
+    >
   </video>
 
   <div class="overlay"></div>
+  <div class="lime-glow"></div>
+
+  <!-- =========================
+       MAIN PAGE
+  ========================= -->
 
   <main class="page">
+
     <div class="content">
 
-      <div class="tag">🏆 SQUASH TOURNAMENT</div>
+      <div class="tag">
+        🏆 SSC MEMBERS
+      </div>
 
       <h1>
-        GET<br>
-        ON<br>
-        COURT
+        SQUASH<br>
+        TOURNAMENT
       </h1>
 
       <p class="subtitle">
-        Think you've got what it takes?
+        Grab your racket and bring your game
       </p>
 
-      <div class="form-card">
+      <div class="event-details">
 
-        <h2>Register to Play 🔥</h2>
+        <div class="event-detail">
+          📅 <span>3 OCTOBER 2026</span>
+        </div>
 
-        <form id="registrationForm">
+        <div class="event-detail">
+          📍 <span>GABORONE</span>
+        </div>
 
-          <div class="field">
-            <label for="name">Full name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-            >
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              required
-            >
-          </div>
-
-          <div class="field">
-            <label for="phone">WhatsApp / Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="+267 ..."
-              required
-            >
-          </div>
-
-          <div class="field">
-            <label for="division">Division</label>
-            <select id="division" name="division" required>
-              <option value="">Choose your division</option>
-              <option>Men's Open</option>
-              <option>Women's Open</option>
-              <option>Men's Social</option>
-              <option>Women's Social</option>
-              <option>Junior</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="club">Squash club</label>
-            <input
-              type="text"
-              id="club"
-              name="club"
-              placeholder="Your club"
-            >
-          </div>
-
-          <button type="submit">
-            REGISTER NOW →
-          </button>
-
-          <p class="small-text">
-            Registration details will be confirmed by the tournament organisers.
-          </p>
-
-        </form>
+        <div class="event-detail">
+          🏟️ <span>NATIONAL SQUASH CENTRE</span>
+        </div>
 
       </div>
 
+
+      <!-- =========================
+           REGISTRATION FORM
+      ========================= -->
+
+      <div class="form-card">
+
+        <div id="registrationContent">
+
+          <h2>REGISTER TO PLAY</h2>
+
+          <p class="form-intro">
+            Let's get you on court. 🔥
+          </p>
+
+          <form id="registrationForm">
+
+            <!-- NAME -->
+
+            <div class="field">
+
+              <label for="name">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="field">
+
+              <label for="email">
+                Email
+              </label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="field">
+
+              <label for="phone">
+                WhatsApp / Phone
+              </label>
+
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+267 ..."
+                required
+              >
+
+            </div>
+
+
+            <!-- DIVISION -->
+
+            <div class="field">
+
+              <label for="division">
+                Division
+              </label>
+
+              <select
+                id="division"
+                name="division"
+                required
+              >
+
+                <option value="">
+                  Choose your division
+                </option>
+
+                <option value="Beginner">
+                  Beginner
+                </option>
+
+                <option value="Intermediate">
+                  Intermediate
+                </option>
+
+                <option value="Masters">
+                  Masters
+                </option>
+
+                <option value="Professional">
+                  Professional
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- CLUB -->
+
+            <div class="field">
+
+              <label for="club">
+                Squash Club
+              </label>
+
+              <input
+                type="text"
+                id="club"
+                name="club"
+                placeholder="Your club"
+              >
+
+            </div>
+
+
+            <!-- DISCLAIMER -->
+
+            <div class="disclaimer">
+
+              <strong>
+                Injury & Risk Disclaimer
+              </strong>
+
+              Squash is a physically demanding sport and participation
+              involves inherent risks, including the risk of injury.
+              By registering for and participating in this tournament,
+              I acknowledge these risks and confirm that I am voluntarily
+              participating and am responsible for ensuring that I am
+              physically fit and able to participate.
+
+              I agree to take reasonable care of my own safety and to
+              follow the instructions and rules of the tournament
+              organisers and venue.
+
+              To the extent permitted by applicable law, I release the
+              tournament organisers, officials, venue and their
+              representatives from liability for injury, loss or damage
+              arising from my participation, except where caused by their
+              negligence, wilful misconduct, or where such liability
+              cannot legally be excluded.
+
+            </div>
+
+
+            <!-- DISCLAIMER CHECKBOX -->
+
+            <div class="checkbox-row">
+
+              <input
+                type="checkbox"
+                id="agreement"
+                name="agreement"
+                required
+              >
+
+              <label for="agreement">
+                I have read and understood the Injury & Risk Disclaimer
+                and agree to its terms.
+              </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button type="submit">
+              REGISTER NOW →
+            </button>
+
+            <p class="small-text">
+              Registration details will be confirmed by the tournament organisers.
+            </p>
+
+          </form>
+
+        </div>
+
+
+        <!-- =========================
+             SUCCESS MESSAGE
+        ========================= -->
+
+        <div
+          id="successMessage"
+          class="success-message"
+        >
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <h2>
+            YOU'RE IN! 🔥
+          </h2>
+
+          <p>
+            Your registration has been received.
+            We'll be in touch with the tournament details.
+          </p>
+
+          <p style="margin-top: 15px; font-weight: bold;">
+            SEE YOU ON COURT.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer">
+        SSC MEMBERS SQUASH TOURNAMENT ·
+        <strong>3 OCTOBER 2026</strong>
+      </div>
+
     </div>
+
   </main>
 
+
+  <!-- =========================
+       FORM SCRIPT
+  ========================= -->
+
   <script>
-    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+    const form =
+      document.getElementById("registrationForm");
+
+    const registrationContent =
+      document.getElementById("registrationContent");
+
+    const successMessage =
+      document.getElementById("successMessage");
+
+
+    form.addEventListener("submit", function(event) {
+
       event.preventDefault();
 
-      alert("🔥 You're in! Registration received.");
+      registrationContent.style.display = "none";
+
+      successMessage.style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
     });
+
   </script>
 
 </body>
