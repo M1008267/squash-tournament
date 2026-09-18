@@ -73,19 +73,22 @@
       padding: 55px 20px;
     }
 
-    .content {
-      width: 100%;
-      max-width: 680px;
-      text-align: center;
-    }
-.ssc-logo {
-  display: block;
-  width: 110px;
-  max-width: 35%;
-  height: auto;
-  margin: 0 auto 22px;
-  object-fit: contain;
+.content {
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
 }
+
+.ssc-logo {
+  position: absolute;
+  top: 28px;
+  right: 35px;
+  width: 95px;
+  height: auto;
+  object-fit: contain;
+  z-index: 10;
+}
+
 
     .tag {
       display: inline-block;
@@ -387,15 +390,11 @@
   <main class="page">
 <div class="content">
 
-  <img
-    src="ssc-logo.png"
-    alt="SSC Logo"
-    class="ssc-logo"
-  >
-
-  <div class="tag">
-    SSC MEMBERS
-  </div>    
+ <img
+  src="ssc-logo.png"
+  alt="SSC Logo"
+  class="ssc-logo"
+>  
 
       <h1>
         SSC MEMBERS<br>
