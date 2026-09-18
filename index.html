@@ -14,21 +14,19 @@
     }
 
     :root {
-      --gold: #c9a45c;
-      --gold-light: #e0c07a;
-      --black: #080808;
-      --charcoal: #151515;
+      --blue: #00a8ff;
+      --cyan: #00e5ff;
+      --navy: #06121c;
+      --dark: #081018;
       --white: #ffffff;
-      --light: #f5f4f1;
-      --grey: #777777;
-      --border: #dedbd5;
+      --muted: #a9b5bf;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
       color: var(--white);
-      background: var(--black);
+      background: var(--navy);
       overflow-x: hidden;
     }
 
@@ -45,17 +43,31 @@
       z-index: -3;
     }
 
-    .overlay {
+    .video-overlay {
       position: fixed;
       inset: 0;
       background:
         linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.91) 0%,
-          rgba(0, 0, 0, 0.78) 50%,
-          rgba(0, 0, 0, 0.70) 100%
+          120deg,
+          rgba(2, 12, 20, 0.94) 0%,
+          rgba(2, 12, 20, 0.78) 45%,
+          rgba(2, 12, 20, 0.62) 100%
         );
       z-index: -2;
+    }
+
+    .blue-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      right: -180px;
+      top: -100px;
+      background: var(--blue);
+      opacity: 0.12;
+      filter: blur(120px);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* =========================
@@ -67,57 +79,56 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 55px 20px;
+      padding: 45px 20px;
     }
 
     .content {
       width: 100%;
-      max-width: 680px;
+      max-width: 700px;
       text-align: center;
     }
 
     /* =========================
-       TOP LABEL
+       HEADER
     ========================= */
 
     .tag {
-      display: inline-block;
-      color: var(--gold);
-      border: 1px solid rgba(201, 164, 92, 0.65);
-      padding: 9px 19px;
-      border-radius: 3px;
-      font-weight: 700;
-      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border: 1px solid rgba(0, 168, 255, 0.55);
+      background: rgba(0, 168, 255, 0.08);
+      color: var(--cyan);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
       letter-spacing: 2px;
-      margin-bottom: 24px;
       text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
     }
-
-    /* =========================
-       MAIN HEADLINE
-    ========================= */
 
     h1 {
-      font-size: clamp(42px, 9vw, 82px);
-      line-height: 0.92;
-      font-weight: 800;
+      font-size: clamp(46px, 10vw, 88px);
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: -4px;
       text-transform: uppercase;
-      letter-spacing: -2px;
       margin-bottom: 25px;
-      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 8px 35px rgba(0, 0, 0, 0.55);
     }
 
-    .headline-accent {
-      color: var(--gold);
+    .headline-blue {
+      color: var(--blue);
     }
 
     .subtitle {
-      font-size: clamp(17px, 3.5vw, 21px);
-      font-weight: 400;
-      color: #eeeeee;
-      margin-bottom: 30px;
-      line-height: 1.5;
-      letter-spacing: 0.3px;
+      font-size: clamp(18px, 4vw, 23px);
+      font-weight: 500;
+      color: #f1f6fa;
+      line-height: 1.4;
+      margin-bottom: 28px;
     }
 
     /* =========================
@@ -128,23 +139,25 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 9px;
-      margin-bottom: 38px;
+      gap: 8px;
+      margin-bottom: 35px;
     }
 
     .event-detail {
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 10px 15px;
-      border-radius: 3px;
-      font-size: 12px;
-      font-weight: 600;
+      padding: 10px 14px;
+      background: rgba(5, 15, 23, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      color: #e9f0f5;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.7px;
       text-transform: uppercase;
+      backdrop-filter: blur(12px);
     }
 
     .event-detail span {
-      color: var(--gold-light);
+      color: var(--cyan);
     }
 
     /* =========================
@@ -152,28 +165,30 @@
     ========================= */
 
     .form-card {
-      background: rgba(250, 249, 247, 0.98);
-      color: var(--black);
-      border-radius: 6px;
-      padding: 34px;
+      background: rgba(7, 17, 26, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 32px;
       text-align: left;
       box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.55),
-        0 0 0 1px rgba(255, 255, 255, 0.18);
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(18px);
     }
 
     .form-card h2 {
+      color: white;
       font-size: 28px;
-      font-weight: 800;
+      font-weight: 900;
+      letter-spacing: -0.5px;
       text-transform: uppercase;
-      margin-bottom: 8px;
-      letter-spacing: 0.3px;
+      margin-bottom: 7px;
     }
 
     .form-intro {
-      color: #666;
-      margin-bottom: 27px;
-      font-size: 15px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
     }
 
     /* =========================
@@ -181,35 +196,50 @@
     ========================= */
 
     .field {
-      margin-bottom: 19px;
+      margin-bottom: 18px;
     }
 
     label {
       display: block;
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 12px;
+      color: #dce7ee;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
     input,
     select {
       width: 100%;
       padding: 15px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.07);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
       font-size: 16px;
-      background: #ffffff;
-      color: #111111;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: 0.2s ease;
+    }
+
+    input::placeholder {
+      color: #71808b;
+    }
+
+    select {
+      color: white;
+    }
+
+    select option {
+      color: #111;
+      background: white;
     }
 
     input:focus,
     select:focus {
       outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.12);
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 168, 255, 0.12);
+      background: rgba(255, 255, 255, 0.09);
     }
 
     /* =========================
@@ -217,23 +247,24 @@
     ========================= */
 
     .disclaimer {
-      background: #efede9;
-      border-left: 3px solid var(--gold);
-      padding: 17px;
       margin-top: 8px;
-      margin-bottom: 18px;
-      font-size: 12px;
+      margin-bottom: 17px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.045);
+      border-left: 3px solid var(--blue);
+      border-radius: 6px;
+      color: #9facb5;
+      font-size: 11px;
       line-height: 1.6;
-      color: #555;
     }
 
     .disclaimer strong {
       display: block;
-      color: #111;
-      margin-bottom: 7px;
-      font-size: 12px;
+      color: #e9f2f7;
+      font-size: 11px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      margin-bottom: 7px;
     }
 
     /* =========================
@@ -245,8 +276,6 @@
       align-items: flex-start;
       gap: 10px;
       margin-bottom: 20px;
-      font-size: 13px;
-      line-height: 1.4;
     }
 
     .checkbox-row input {
@@ -254,14 +283,16 @@
       height: 18px;
       min-width: 18px;
       margin-top: 1px;
-      accent-color: var(--gold);
+      accent-color: var(--blue);
     }
 
     .checkbox-row label {
       text-transform: none;
       letter-spacing: 0;
-      font-size: 13px;
-      font-weight: 600;
+      color: #aebac3;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.45;
       margin: 0;
     }
 
@@ -271,25 +302,26 @@
 
     button {
       width: 100%;
-      padding: 18px;
+      padding: 17px;
       border: none;
-      border-radius: 3px;
-      background: var(--gold);
-      color: #111111;
+      border-radius: 10px;
+      background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan)
+      );
+      color: #031018;
       font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
+      font-weight: 900;
+      letter-spacing: 1px;
       cursor: pointer;
-      transition:
-        background 0.2s,
-        transform 0.2s,
-        box-shadow 0.2s;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 25px rgba(0, 168, 255, 0.2);
     }
 
     button:hover {
-      background: var(--gold-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(201, 164, 92, 0.25);
+      box-shadow: 0 12px 32px rgba(0, 168, 255, 0.3);
     }
 
     button:active {
@@ -298,14 +330,13 @@
 
     .small-text {
       text-align: center;
-      color: #888;
-      font-size: 11px;
-      margin-top: 14px;
-      line-height: 1.4;
+      color: #697984;
+      font-size: 10px;
+      margin-top: 13px;
     }
 
     /* =========================
-       SUCCESS MESSAGE
+       SUCCESS
     ========================= */
 
     .success-message {
@@ -315,26 +346,33 @@
     }
 
     .success-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--gold);
-      color: #111;
-      border-radius: 50%;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 18px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--cyan)
+      );
+      color: #031018;
       font-size: 28px;
-      margin: 0 auto 18px;
+      font-weight: 900;
     }
 
     .success-message h2 {
-      font-size: 28px;
+      color: white;
+      font-size: 27px;
       margin-bottom: 10px;
     }
 
     .success-message p {
-      color: #666;
+      color: var(--muted);
       line-height: 1.5;
+      font-size: 14px;
     }
 
     /* =========================
@@ -342,14 +380,15 @@
     ========================= */
 
     .footer {
-      margin-top: 25px;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.65);
-      letter-spacing: 0.5px;
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .footer strong {
-      color: var(--gold-light);
+      color: var(--blue);
     }
 
     /* =========================
@@ -359,12 +398,12 @@
     @media (max-width: 600px) {
 
       .page {
-        padding: 35px 15px;
+        padding: 30px 14px;
       }
 
       h1 {
-        font-size: clamp(40px, 12vw, 65px);
-        letter-spacing: -1.5px;
+        font-size: clamp(42px, 13vw, 68px);
+        letter-spacing: -2.5px;
       }
 
       .subtitle {
@@ -376,19 +415,19 @@
       }
 
       .event-detail {
-        font-size: 10px;
-        padding: 8px 10px;
+        font-size: 9px;
+        padding: 8px 9px;
       }
 
       .form-card {
-        padding: 24px;
+        padding: 23px 19px;
+        border-radius: 17px;
       }
 
       .form-card h2 {
-        font-size: 25px;
+        font-size: 24px;
       }
     }
-
   </style>
 </head>
 
@@ -410,27 +449,31 @@
     >
   </video>
 
-  <div class="overlay"></div>
+  <div class="video-overlay"></div>
+  <div class="blue-glow"></div>
 
 
-  <!-- MAIN PAGE -->
+  <!-- MAIN CONTENT -->
 
   <main class="page">
 
     <div class="content">
 
       <div class="tag">
-        SSC MEMBERS
+        ● SSC MEMBERS
       </div>
 
       <h1>
         SSC MEMBERS<br>
-        <span class="headline-accent">SQUASH TOURNAMENT</span>
+        <span class="headline-blue">SQUASH TOURNAMENT</span>
       </h1>
 
       <p class="subtitle">
         Grab your racket and bring your game
       </p>
+
+
+      <!-- EVENT INFORMATION -->
 
       <div class="event-details">
 
@@ -439,7 +482,7 @@
         </div>
 
         <div class="event-detail">
-          📍 <span>GABORONE, BOTSWANA</span>
+          📍 <span>GABORONE</span>
         </div>
 
         <div class="event-detail">
@@ -449,7 +492,7 @@
       </div>
 
 
-      <!-- REGISTRATION -->
+      <!-- REGISTRATION FORM -->
 
       <div class="form-card">
 
@@ -458,10 +501,12 @@
           <h2>REGISTER TO PLAY</h2>
 
           <p class="form-intro">
-            Secure your place in the tournament.
+            Secure your place on the court.
           </p>
 
           <form id="registrationForm">
+
+            <!-- FULL NAME -->
 
             <div class="field">
 
@@ -480,6 +525,8 @@
             </div>
 
 
+            <!-- EMAIL -->
+
             <div class="field">
 
               <label for="email">
@@ -497,6 +544,8 @@
             </div>
 
 
+            <!-- PHONE -->
+
             <div class="field">
 
               <label for="phone">
@@ -513,6 +562,8 @@
 
             </div>
 
+
+            <!-- DIVISION -->
 
             <div class="field">
 
@@ -551,7 +602,7 @@
             </div>
 
 
-            <!-- DISCLAIMER -->
+            <!-- INJURY DISCLAIMER -->
 
             <div class="disclaimer">
 
@@ -580,6 +631,8 @@
             </div>
 
 
+            <!-- AGREEMENT -->
+
             <div class="checkbox-row">
 
               <input
@@ -596,6 +649,8 @@
 
             </div>
 
+
+            <!-- SUBMIT -->
 
             <button type="submit">
               REGISTER NOW →
@@ -630,7 +685,7 @@
             SSC Members Squash Tournament.
           </p>
 
-          <p style="margin-top: 15px; font-weight: bold;">
+          <p style="margin-top: 15px; font-weight: 700;">
             SEE YOU ON COURT.
           </p>
 
