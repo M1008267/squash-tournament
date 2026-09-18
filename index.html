@@ -14,12 +14,14 @@
     }
 
     :root {
-      --lime: #c7ff00;
-      --lime-bright: #d8ff3f;
+      --gold: #c9a45c;
+      --gold-light: #e0c07a;
       --black: #080808;
-      --dark: #111111;
+      --charcoal: #151515;
       --white: #ffffff;
-      --grey: #d5d5d5;
+      --light: #f5f4f1;
+      --grey: #777777;
+      --border: #dedbd5;
     }
 
     body {
@@ -49,25 +51,11 @@
       background:
         linear-gradient(
           90deg,
-          rgba(0, 0, 0, 0.88) 0%,
-          rgba(0, 0, 0, 0.70) 45%,
-          rgba(0, 0, 0, 0.60) 100%
+          rgba(0, 0, 0, 0.91) 0%,
+          rgba(0, 0, 0, 0.78) 50%,
+          rgba(0, 0, 0, 0.70) 100%
         );
       z-index: -2;
-    }
-
-    .lime-glow {
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: var(--lime);
-      opacity: 0.08;
-      filter: blur(120px);
-      border-radius: 50%;
-      right: -200px;
-      top: 10%;
-      z-index: -1;
-      pointer-events: none;
     }
 
     /* =========================
@@ -79,74 +67,84 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 50px 20px;
+      padding: 55px 20px;
     }
 
     .content {
       width: 100%;
-      max-width: 650px;
+      max-width: 680px;
       text-align: center;
     }
 
     /* =========================
-       TAG
+       TOP LABEL
     ========================= */
 
     .tag {
       display: inline-block;
-      background: var(--lime);
-      color: var(--black);
-      padding: 9px 18px;
-      border-radius: 30px;
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      margin-bottom: 22px;
+      color: var(--gold);
+      border: 1px solid rgba(201, 164, 92, 0.65);
+      padding: 9px 19px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
       text-transform: uppercase;
     }
 
     /* =========================
-       HEADINGS
+       MAIN HEADLINE
     ========================= */
 
     h1 {
-      font-size: clamp(55px, 12vw, 105px);
-      line-height: 0.82;
-      font-weight: 900;
+      font-size: clamp(42px, 9vw, 82px);
+      line-height: 0.92;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: -5px;
+      letter-spacing: -2px;
       margin-bottom: 25px;
-      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .headline-accent {
+      color: var(--gold);
     }
 
     .subtitle {
-      font-size: clamp(18px, 4vw, 23px);
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 35px;
-      line-height: 1.4;
+      font-size: clamp(17px, 3.5vw, 21px);
+      font-weight: 400;
+      color: #eeeeee;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      letter-spacing: 0.3px;
     }
+
+    /* =========================
+       EVENT DETAILS
+    ========================= */
 
     .event-details {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 35px;
+      gap: 9px;
+      margin-bottom: 38px;
     }
 
     .event-detail {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: bold;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
     }
 
     .event-detail span {
-      color: var(--lime);
+      color: var(--gold-light);
     }
 
     /* =========================
@@ -154,27 +152,27 @@
     ========================= */
 
     .form-card {
-      background: rgba(255, 255, 255, 0.97);
+      background: rgba(250, 249, 247, 0.98);
       color: var(--black);
-      border-radius: 26px;
-      padding: 32px;
+      border-radius: 6px;
+      padding: 34px;
       text-align: left;
       box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+        0 25px 80px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.18);
     }
 
     .form-card h2 {
-      font-size: 32px;
-      font-weight: 900;
+      font-size: 28px;
+      font-weight: 800;
       text-transform: uppercase;
       margin-bottom: 8px;
-      letter-spacing: -1px;
+      letter-spacing: 0.3px;
     }
 
     .form-intro {
       color: #666;
-      margin-bottom: 25px;
+      margin-bottom: 27px;
       font-size: 15px;
     }
 
@@ -188,19 +186,19 @@
 
     label {
       display: block;
-      font-weight: 900;
+      font-weight: 700;
       margin-bottom: 8px;
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
     input,
     select {
       width: 100%;
       padding: 15px;
-      border: 2px solid #dddddd;
-      border-radius: 11px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
       font-size: 16px;
       background: #ffffff;
       color: #111111;
@@ -210,8 +208,8 @@
     input:focus,
     select:focus {
       outline: none;
-      border-color: var(--lime);
-      box-shadow: 0 0 0 3px rgba(199, 255, 0, 0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.12);
     }
 
     /* =========================
@@ -219,23 +217,28 @@
     ========================= */
 
     .disclaimer {
-      background: #f2f2f2;
-      border-radius: 12px;
-      padding: 16px;
+      background: #efede9;
+      border-left: 3px solid var(--gold);
+      padding: 17px;
       margin-top: 8px;
       margin-bottom: 18px;
       font-size: 12px;
-      line-height: 1.55;
+      line-height: 1.6;
       color: #555;
     }
 
     .disclaimer strong {
       display: block;
       color: #111;
-      margin-bottom: 6px;
-      font-size: 13px;
+      margin-bottom: 7px;
+      font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
+
+    /* =========================
+       CHECKBOX
+    ========================= */
 
     .checkbox-row {
       display: flex;
@@ -251,7 +254,7 @@
       height: 18px;
       min-width: 18px;
       margin-top: 1px;
-      accent-color: var(--lime);
+      accent-color: var(--gold);
     }
 
     .checkbox-row label {
@@ -270,23 +273,23 @@
       width: 100%;
       padding: 18px;
       border: none;
-      border-radius: 12px;
-      background: var(--lime);
-      color: var(--black);
-      font-size: 17px;
-      font-weight: 900;
-      letter-spacing: 0.5px;
+      border-radius: 3px;
+      background: var(--gold);
+      color: #111111;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
       cursor: pointer;
       transition:
-        transform 0.2s,
         background 0.2s,
+        transform 0.2s,
         box-shadow 0.2s;
     }
 
     button:hover {
-      transform: translateY(-3px);
-      background: var(--lime-bright);
-      box-shadow: 0 10px 25px rgba(199, 255, 0, 0.25);
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(201, 164, 92, 0.25);
     }
 
     button:active {
@@ -308,24 +311,24 @@
     .success-message {
       display: none;
       text-align: center;
-      padding: 20px 5px;
+      padding: 25px 5px;
     }
 
     .success-icon {
-      width: 65px;
-      height: 65px;
-      background: var(--lime);
-      color: var(--black);
+      width: 60px;
+      height: 60px;
+      background: var(--gold);
+      color: #111;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 28px;
       margin: 0 auto 18px;
     }
 
     .success-message h2 {
-      font-size: 30px;
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
@@ -340,12 +343,13 @@
 
     .footer {
       margin-top: 25px;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.5px;
     }
 
     .footer strong {
-      color: var(--lime);
+      color: var(--gold-light);
     }
 
     /* =========================
@@ -355,34 +359,33 @@
     @media (max-width: 600px) {
 
       .page {
-        padding: 30px 15px;
+        padding: 35px 15px;
       }
 
       h1 {
-        font-size: clamp(52px, 17vw, 80px);
-        letter-spacing: -3px;
+        font-size: clamp(40px, 12vw, 65px);
+        letter-spacing: -1.5px;
       }
 
       .subtitle {
-        font-size: 18px;
+        font-size: 17px;
       }
 
       .event-details {
-        gap: 7px;
+        gap: 6px;
       }
 
       .event-detail {
-        font-size: 12px;
-        padding: 8px 11px;
+        font-size: 10px;
+        padding: 8px 10px;
       }
 
       .form-card {
-        padding: 23px;
-        border-radius: 21px;
+        padding: 24px;
       }
 
       .form-card h2 {
-        font-size: 27px;
+        font-size: 25px;
       }
     }
 
@@ -391,9 +394,7 @@
 
 <body>
 
-  <!-- =========================
-       SQUASH VIDEO BACKGROUND
-  ========================= -->
+  <!-- BACKGROUND VIDEO -->
 
   <video
     class="video-background"
@@ -410,23 +411,21 @@
   </video>
 
   <div class="overlay"></div>
-  <div class="lime-glow"></div>
 
-  <!-- =========================
-       MAIN PAGE
-  ========================= -->
+
+  <!-- MAIN PAGE -->
 
   <main class="page">
 
     <div class="content">
 
       <div class="tag">
-        🏆 SSC MEMBERS
+        SSC MEMBERS
       </div>
 
       <h1>
-        SQUASH<br>
-        TOURNAMENT
+        SSC MEMBERS<br>
+        <span class="headline-accent">SQUASH TOURNAMENT</span>
       </h1>
 
       <p class="subtitle">
@@ -440,7 +439,7 @@
         </div>
 
         <div class="event-detail">
-          📍 <span>GABORONE</span>
+          📍 <span>GABORONE, BOTSWANA</span>
         </div>
 
         <div class="event-detail">
@@ -450,9 +449,7 @@
       </div>
 
 
-      <!-- =========================
-           REGISTRATION FORM
-      ========================= -->
+      <!-- REGISTRATION -->
 
       <div class="form-card">
 
@@ -461,12 +458,10 @@
           <h2>REGISTER TO PLAY</h2>
 
           <p class="form-intro">
-            Let's get you on court. 🔥
+            Secure your place in the tournament.
           </p>
 
           <form id="registrationForm">
-
-            <!-- NAME -->
 
             <div class="field">
 
@@ -485,8 +480,6 @@
             </div>
 
 
-            <!-- EMAIL -->
-
             <div class="field">
 
               <label for="email">
@@ -504,8 +497,6 @@
             </div>
 
 
-            <!-- PHONE -->
-
             <div class="field">
 
               <label for="phone">
@@ -522,8 +513,6 @@
 
             </div>
 
-
-            <!-- DIVISION -->
 
             <div class="field">
 
@@ -562,24 +551,6 @@
             </div>
 
 
-            <!-- CLUB -->
-
-            <div class="field">
-
-              <label for="club">
-                Squash Club
-              </label>
-
-              <input
-                type="text"
-                id="club"
-                name="club"
-                placeholder="Your club"
-              >
-
-            </div>
-
-
             <!-- DISCLAIMER -->
 
             <div class="disclaimer">
@@ -609,8 +580,6 @@
             </div>
 
 
-            <!-- DISCLAIMER CHECKBOX -->
-
             <div class="checkbox-row">
 
               <input
@@ -628,8 +597,6 @@
             </div>
 
 
-            <!-- SUBMIT -->
-
             <button type="submit">
               REGISTER NOW →
             </button>
@@ -643,9 +610,7 @@
         </div>
 
 
-        <!-- =========================
-             SUCCESS MESSAGE
-        ========================= -->
+        <!-- SUCCESS MESSAGE -->
 
         <div
           id="successMessage"
@@ -657,12 +622,12 @@
           </div>
 
           <h2>
-            YOU'RE IN! 🔥
+            REGISTRATION RECEIVED
           </h2>
 
           <p>
-            Your registration has been received.
-            We'll be in touch with the tournament details.
+            Thank you for registering for the
+            SSC Members Squash Tournament.
           </p>
 
           <p style="margin-top: 15px; font-weight: bold;">
@@ -684,9 +649,7 @@
   </main>
 
 
-  <!-- =========================
-       FORM SCRIPT
-  ========================= -->
+  <!-- FORM SCRIPT -->
 
   <script>
 
@@ -698,7 +661,6 @@
 
     const successMessage =
       document.getElementById("successMessage");
-
 
     form.addEventListener("submit", function(event) {
 
