@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Squash Tournament</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      color: white;
+      background: #111;
+      overflow-x: hidden;
+    }
+
+    /* Background video */
+    .video-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* Dark layer over the video */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #c7ff00;
+      color: #111;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(50px, 12vw, 100px);
+      line-height: 0.85;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -4px;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.96);
+      color: #111;
+      border-radius: 24px;
+      padding: 30px;
+      text-align: left;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-card h2 {
+      font-size: 28px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #c7ff00;
+    }
+
+    button {
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 12px;
+      background: #c7ff00;
+      color: #111;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: #d7ff4d;
+    }
+
+    .small-text {
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 500px) {
+      .form-card {
+        padding: 22px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background video -->
+  <video class="video-background" autoplay muted loop playsinline>
+    <source src="squash.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <main class="page">
+    <div class="content">
+
+      <div class="tag">🏆 SQUASH TOURNAMENT</div>
+
+      <h1>
+        GET<br>
+        ON<br>
+        COURT
+      </h1>
+
+      <p class="subtitle">
+        Think you've got what it takes?
+      </p>
+
+      <div class="form-card">
+
+        <h2>Register to Play 🔥</h2>
+
+        <form id="registrationForm">
+
+          <div class="field">
+            <label for="name">Full name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">WhatsApp / Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+267 ..."
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="division">Division</label>
+            <select id="division" name="division" required>
+              <option value="">Choose your division</option>
+              <option>Men's Open</option>
+              <option>Women's Open</option>
+              <option>Men's Social</option>
+              <option>Women's Social</option>
+              <option>Junior</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="club">Squash club</label>
+            <input
+              type="text"
+              id="club"
+              name="club"
+              placeholder="Your club"
+            >
+          </div>
+
+          <button type="submit">
+            REGISTER NOW →
+          </button>
+
+          <p class="small-text">
+            Registration details will be confirmed by the tournament organisers.
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      alert("🔥 You're in! Registration received.");
+    });
+  </script>
+
+</body>
+</html>
