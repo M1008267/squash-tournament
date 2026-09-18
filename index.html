@@ -17,9 +17,7 @@
       --red: #a9232b;
       --red-dark: #861c23;
       --black: #0b0b0b;
-      --charcoal: #171717;
       --white: #f7f6f3;
-      --grey: #77736f;
       --border: #ddd9d3;
     }
 
@@ -30,10 +28,6 @@
       background: var(--black);
       overflow-x: hidden;
     }
-
-    /* =========================
-       BACKGROUND VIDEO
-    ========================= */
 
     .video-background {
       position: fixed;
@@ -57,7 +51,6 @@
       z-index: -2;
     }
 
-    /* A very subtle red atmosphere */
     .red-glow {
       position: fixed;
       width: 420px;
@@ -71,10 +64,6 @@
       z-index: -1;
       pointer-events: none;
     }
-
-    /* =========================
-       PAGE
-    ========================= */
 
     .page {
       min-height: 100vh;
@@ -90,10 +79,6 @@
       text-align: center;
     }
 
-    /* =========================
-       SSC LABEL
-    ========================= */
-
     .tag {
       display: inline-block;
       color: var(--white);
@@ -106,10 +91,6 @@
       text-transform: uppercase;
       margin-bottom: 25px;
     }
-
-    /* =========================
-       HEADLINE
-    ========================= */
 
     h1 {
       font-size: clamp(43px, 9vw, 78px);
@@ -132,10 +113,6 @@
       line-height: 1.5;
       margin-bottom: 30px;
     }
-
-    /* =========================
-       EVENT DETAILS
-    ========================= */
 
     .event-details {
       display: flex;
@@ -162,10 +139,6 @@
       color: #f0d1d3;
     }
 
-    /* =========================
-       FORM CARD
-    ========================= */
-
     .form-card {
       background: rgba(248, 247, 244, 0.98);
       color: var(--black);
@@ -191,10 +164,6 @@
       margin-bottom: 26px;
     }
 
-    /* =========================
-       FORM FIELDS
-    ========================= */
-
     .field {
       margin-bottom: 19px;
     }
@@ -218,15 +187,10 @@
       background: #ffffff;
       color: #171717;
       font-size: 16px;
-      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     input::placeholder {
       color: #999590;
-    }
-
-    select option {
-      color: #111;
     }
 
     input:focus,
@@ -235,10 +199,6 @@
       border-color: var(--red);
       box-shadow: 0 0 0 3px rgba(169, 35, 43, 0.10);
     }
-
-    /* =========================
-       DISCLAIMER
-    ========================= */
 
     .disclaimer {
       margin-top: 8px;
@@ -260,10 +220,6 @@
       text-transform: uppercase;
       margin-bottom: 7px;
     }
-
-    /* =========================
-       CHECKBOX
-    ========================= */
 
     .checkbox-row {
       display: flex;
@@ -290,10 +246,6 @@
       margin: 0;
     }
 
-    /* =========================
-       BUTTON
-    ========================= */
-
     button {
       width: 100%;
       padding: 17px;
@@ -312,11 +264,12 @@
     button:hover {
       background: var(--red-dark);
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(134, 28, 35, 0.18);
     }
 
-    button:active {
-      transform: translateY(0);
+    button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
     }
 
     .small-text {
@@ -326,10 +279,6 @@
       margin-top: 13px;
       line-height: 1.4;
     }
-
-    /* =========================
-       SUCCESS MESSAGE
-    ========================= */
 
     .success-message {
       display: none;
@@ -362,10 +311,6 @@
       font-size: 14px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
     .footer {
       margin-top: 23px;
       color: rgba(255, 255, 255, 0.48);
@@ -378,12 +323,7 @@
       color: #d99da1;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 600px) {
-
       .page {
         padding: 35px 15px;
       }
@@ -419,8 +359,6 @@
 
 <body>
 
-  <!-- BACKGROUND VIDEO -->
-
   <video
     class="video-background"
     autoplay
@@ -437,9 +375,6 @@
 
   <div class="video-overlay"></div>
   <div class="red-glow"></div>
-
-
-  <!-- MAIN CONTENT -->
 
   <main class="page">
 
@@ -458,9 +393,6 @@
         Grab your racket and bring your game
       </p>
 
-
-      <!-- EVENT INFORMATION -->
-
       <div class="event-details">
 
         <div class="event-detail">
@@ -477,9 +409,6 @@
 
       </div>
 
-
-      <!-- REGISTRATION FORM -->
-
       <div class="form-card">
 
         <div id="registrationContent">
@@ -492,13 +421,8 @@
 
           <form id="registrationForm">
 
-            <!-- FULL NAME -->
-
             <div class="field">
-
-              <label for="name">
-                Full Name
-              </label>
+              <label for="name">Full Name</label>
 
               <input
                 type="text"
@@ -507,17 +431,10 @@
                 placeholder="Your name"
                 required
               >
-
             </div>
 
-
-            <!-- EMAIL -->
-
             <div class="field">
-
-              <label for="email">
-                Email
-              </label>
+              <label for="email">Email</label>
 
               <input
                 type="email"
@@ -526,17 +443,10 @@
                 placeholder="you@example.com"
                 required
               >
-
             </div>
 
-
-            <!-- PHONE -->
-
             <div class="field">
-
-              <label for="phone">
-                WhatsApp / Phone
-              </label>
+              <label for="phone">WhatsApp / Phone</label>
 
               <input
                 type="tel"
@@ -545,56 +455,23 @@
                 placeholder="+267 ..."
                 required
               >
-
             </div>
-
-
-            <!-- DIVISION -->
 
             <div class="field">
+              <label for="division">Division</label>
 
-              <label for="division">
-                Division
-              </label>
-
-              <select
-                id="division"
-                name="division"
-                required
-              >
-
-                <option value="">
-                  Choose your division
-                </option>
-
-                <option value="Beginner">
-                  Beginner
-                </option>
-
-                <option value="Intermediate">
-                  Intermediate
-                </option>
-
-                <option value="Masters">
-                  Masters
-                </option>
-
-                <option value="Professional">
-                  Professional
-                </option>
-
+              <select id="division" name="division" required>
+                <option value="">Choose your division</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Masters">Masters</option>
+                <option value="Professional">Professional</option>
               </select>
-
             </div>
-
-
-            <!-- DISCLAIMER -->
 
             <div class="disclaimer">
 
-              <strong>
-                Injury & Risk Disclaimer
-              </strong>
+              <strong>Injury & Risk Disclaimer</strong>
 
               Squash is a physically demanding sport and participation
               involves inherent risks, including the risk of injury.
@@ -616,9 +493,6 @@
 
             </div>
 
-
-            <!-- AGREEMENT -->
-
             <div class="checkbox-row">
 
               <input
@@ -635,10 +509,7 @@
 
             </div>
 
-
-            <!-- SUBMIT -->
-
-            <button type="submit">
+            <button type="submit" id="submitButton">
               REGISTER NOW →
             </button>
 
@@ -650,13 +521,7 @@
 
         </div>
 
-
-        <!-- SUCCESS MESSAGE -->
-
-        <div
-          id="successMessage"
-          class="success-message"
-        >
+        <div id="successMessage" class="success-message">
 
           <div class="success-icon">
             ✓
@@ -679,7 +544,6 @@
 
       </div>
 
-
       <div class="footer">
         SSC MEMBERS SQUASH TOURNAMENT ·
         <strong>3 OCTOBER 2026</strong>
@@ -689,31 +553,73 @@
 
   </main>
 
-
-  <!-- FORM SCRIPT -->
-
   <script>
 
-    const form =
-      document.getElementById("registrationForm");
-
+    const form = document.getElementById("registrationForm");
     const registrationContent =
       document.getElementById("registrationContent");
-
     const successMessage =
       document.getElementById("successMessage");
+    const submitButton =
+      document.getElementById("submitButton");
 
     form.addEventListener("submit", function(event) {
 
       event.preventDefault();
 
-      registrationContent.style.display = "none";
+      submitButton.disabled = true;
+      submitButton.textContent = "SUBMITTING...";
 
-      successMessage.style.display = "block";
+      const formData = new FormData();
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      formData.append(
+        "entry.117766314",
+        document.getElementById("name").value
+      );
+
+      formData.append(
+        "entry.747900300",
+        document.getElementById("email").value
+      );
+
+      formData.append(
+        "entry.250833876",
+        document.getElementById("phone").value
+      );
+
+      formData.append(
+        "entry.2093917512",
+        document.getElementById("division").value
+      );
+
+      fetch(
+        "https://docs.google.com/forms/d/e/1FAIpQLSdIbBF6cGFUUSOJkO3fMty83gUq5N0bQ6w2EIvpE266ZfQ3dw/formResponse",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        }
+      )
+      .then(function() {
+
+        registrationContent.style.display = "none";
+        successMessage.style.display = "block";
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      })
+      .catch(function() {
+
+        submitButton.disabled = false;
+        submitButton.textContent = "REGISTER NOW →";
+
+        alert(
+          "There was a problem submitting your registration. Please try again."
+        );
+
       });
 
     });
